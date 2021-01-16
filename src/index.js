@@ -10,7 +10,6 @@ require("dotenv").config();
 
 (async function() {
   const fulfilledStore = await store;
-
   ReactDOM.render(
     <React.StrictMode>
       <Provider store={fulfilledStore}>

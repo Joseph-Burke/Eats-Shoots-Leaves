@@ -4,8 +4,10 @@ import getMeals from "./helpers/getMeals.js";
 
 export default (async function() {
   let meals = await getMeals();
+  const filter = '';
   const initialState = {
-    meals
+    meals,
+    filter
   };
   return createStore(reducer, initialState);
 })();

@@ -3,5 +3,6 @@ export default async function() {
   const data = await fetch(
     `https://api.edamam.com/search?q=vegan&health=vegan&to=100&app_id=${id}&app_key=${key}`
   ).then(response => response.json());
-  return data.hits;
-};
+  const recipes = data.hits.map(arrayItem => arrayItem.recipe);
+  return recipes;
+}

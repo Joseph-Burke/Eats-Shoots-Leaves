@@ -3,21 +3,25 @@ import ReactDOM from "react-dom";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import getMeals from "./helpers/getMeals";
+import { Provider } from "react-redux";
+import store from "./store";
 require("dotenv").config();
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <Switch>
-        <Route exact path="/" component={App} />
-        <Route path="/test" component={<div>test</div>} />
-      </Switch>
-    </Router>
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+(async function() {
+  const fulfilledStore = await store;
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  ReactDOM.render(
+    <React.StrictMode>
+      <Provider store={fulfilledStore}>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={App} />
+            <Route path="/test" component={<div>test</div>} />
+          </Switch>
+        </Router>
+      </Provider>
+    </React.StrictMode>,
+    document.getElementById("root")
+  );
+})();

@@ -1,11 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/App";
-import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import getMeals from "./helpers/getMeals";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
+import App from "./components/App";
+import Recipe from "./components/Recipe";
 require("dotenv").config();
 
 (async function() {
@@ -15,8 +14,11 @@ require("dotenv").config();
       <Provider store={fulfilledStore}>
         <Router>
           <Switch>
-            <Route exact path="/" component={App} />
-            <Route path="/test" component={<div>test</div>} />
+            <Route exact path="/">
+              <App />
+            </Route>
+
+            <Route path="/recipe/:id" children={ <Recipe /> } />
           </Switch>
         </Router>
       </Provider>

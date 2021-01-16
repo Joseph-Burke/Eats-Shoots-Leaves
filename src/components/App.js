@@ -1,17 +1,23 @@
-import getMeals from "../helpers/getMeals";
+import { connect } from "react-redux";
 
-function App() {
+function App(props) {
+  const { meals } = props;
+  const mealsList = meals.map(meal => {
+    return <div>{meal.label}</div>
+  });
   return (
     <div className="App">
       <header
         className="App-header"
-        onClick={() => {
-          getMeals().then(output => console.log(output));
-        }}
         style={{ height: "100px", background: "grey" }}
       ></header>
+      {mealsList}
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => ({
+  meals: state.meals
+});
+
+export default connect(mapStateToProps)(App);

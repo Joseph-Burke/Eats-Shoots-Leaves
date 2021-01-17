@@ -10,7 +10,9 @@ export default (async function() {
     }))
   );
 
-  const filter = "";
+  const filter = {
+    searchTerm: ''
+  };
   const initialState = {
     meals,
     filter

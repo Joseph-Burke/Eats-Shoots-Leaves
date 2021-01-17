@@ -6,16 +6,15 @@ function App(props) {
   const filteredMeals = meals.filter(meal => {
     const [caselessLabel, caselessFilter] = [
       meal.label.toUpperCase(),
-      filter.toUpperCase()
+      filter.searchTerm.toUpperCase()
     ];
     return caselessLabel.includes(caselessFilter);
   });
   const mealsList = (
     <div className="row">
       {filteredMeals.map(meal => {
-        console.log(meal);
         return (
-          <div class="card col-3">
+          <div class="card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
             <img src={meal.image} class="card-img-top" />
             <div class="card-body">
               <h5>{meal.label}</h5>
@@ -27,10 +26,14 @@ function App(props) {
   );
 
   return (
-    <section className="container">
+    <>
+    <section className="container px-0 py-4">
       <Filter />
+    </section>
+    <section className="container">
       {mealsList}
     </section>
+    </>
   );
 }
 

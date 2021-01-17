@@ -1,22 +1,36 @@
 import { connect } from "react-redux";
-import Filter from './Filter';
+import Filter from "./Filter";
 
 function App(props) {
   const { meals, filter } = props;
   const filteredMeals = meals.filter(meal => {
-    const [caselessLabel, caselessFilter] = [meal.label.toUpperCase(), filter.toUpperCase()];
+    const [caselessLabel, caselessFilter] = [
+      meal.label.toUpperCase(),
+      filter.toUpperCase()
+    ];
     return caselessLabel.includes(caselessFilter);
-  })
-  const mealsList = filteredMeals.map(meal => {
-    return <div>{meal.label}</div>;
   });
-  return (
-    <div className="App">
-      <header>
-        <Filter />
-      </header>
-      {mealsList}
+  const mealsList = (
+    <div className="row">
+      {filteredMeals.map(meal => {
+        console.log(meal);
+        return (
+          <div class="card col-3">
+            <img src={meal.image} class="card-img-top" />
+            <div class="card-body">
+              <h5>{meal.label}</h5>
+            </div>
+          </div>
+        );
+      })}
     </div>
+  );
+
+  return (
+    <section className="container">
+      <Filter />
+      {mealsList}
+    </section>
   );
 }
 

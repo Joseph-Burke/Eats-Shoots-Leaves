@@ -11,7 +11,17 @@ export default (async function() {
   );
 
   const filter = {
-    searchTerm: ''
+    searchTerm: '',
+    maxCalories: 10000, 
+    maxTime: 1000, 
+    labels: {
+      "Peanut-Free": false,
+      "Tree-Nut-Free": false,
+      "Alcohol-Free": false,
+      "Sugar-Conscious": false,
+      "Low-Fat": false,
+      "Balanced": false,
+    }
   };
   const initialState = {
     meals,

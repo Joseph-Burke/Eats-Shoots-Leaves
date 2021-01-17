@@ -4,7 +4,17 @@ import { changeFilter } from "../actions";
 
 const Filter = ({ changeFilter }) => {
   const [filter, setFilter] = useState({
-    searchTerm: ""
+    searchTerm: "",
+    maxCalories: 3000,
+    maxTime: 120,
+    labels: {
+      "Peanut-Free": false,
+      "Tree-Nut-Free": false,
+      "Alcohol-Free": false,
+      "Sugar-Conscious": false,
+      "Low-Fat": false,
+      "Balanced": false,
+    }
   });
 
   useEffect(() => {
@@ -13,16 +23,26 @@ const Filter = ({ changeFilter }) => {
 
   const handleChange = event => {
     const { target } = event;
-    const { value } = target;
+    const { value, id } = target;
 
-    setFilter({
-      ...filter,
-      ...{ [target.id]: value }
-    });
+    if (filter.hasOwnProperty(id)) {
+      setFilter({
+        ...filter,
+        ...{ [id]: value }
+      });
+    } else if (filter.labels.hasOwnProperty(id)) {
+      setFilter({
+        ...filter,
+        ...{ labels: {
+          ...filter.labels,
+          [id]: !filter.labels[id]
+        }}
+      });
+    }
   };
 
   return (
-    <form>
+    <form onChange={handleChange.bind(this)}>
       <label htmlFor="searchTerm" className="form-label">
         Search Term
       </label>
@@ -30,136 +50,95 @@ const Filter = ({ changeFilter }) => {
         type="text"
         className="form-control"
         id="searchTerm"
-        data-attribute="searchTerm"
-        onChange={handleChange.bind(this)}
         value={filter.searchTerm}
       />
 
-      <label htmlFor="caloriesFilter" className="form-label">
+      <label htmlFor="maxCalories" className="form-label">
         Calories
       </label>
       <input
         type="range"
         className="form-range"
-        id="caloriesFilter"
-        onChange={({ target: { value } }) => {
-          console.log(value);
-        }}
+        id="maxCalories"
         min="0"
         max="3000"
-        // value={filter}
+        value={filter.maxCalories}
       />
 
-      <label htmlFor="timeFilter" className="form-label">
+      <label htmlFor="maxTime" className="form-label">
         Time
       </label>
       <input
         type="range"
         className="form-range"
-        id="timeFilter"
-        onChange={({ target: { value } }) => {
-          console.log(value);
-        }}
+        id="maxTime"
         min="0"
         max="120"
         step="15"
-        // value={filter}
-      />
-
-      <label htmlFor="timeFilter" className="form-label">
-        Time
-      </label>
-      <input
-        type="range"
-        className="form-range"
-        id="timeFilter"
-        onChange={({ target: { value } }) => {
-          console.log(value);
-        }}
-        min="0"
-        max="120"
-        step="15"
-        // value={filter}
+        value={filter.maxTime}
       />
 
       <fieldset>
         <h4>Allergens, Diets and Health</h4>
 
-        <div class="form-check form-check-inline">
+        <div className="form-check form-check-inline">
           <input
-            class="form-check-input"
+            className="form-check-input"
             type="checkbox"
-            id="inlineCheckbox1"
-            value="option1"
+            id="Peanut-Free"
           />
-          <label class="form-check-label" for="inlineCheckbox1">
+          <label className="form-check-label" htmlFor="peanutFree">
             Peanut-Free
           </label>
         </div>
-        <div class="form-check form-check-inline">
+        <div className="form-check form-check-inline">
           <input
-            class="form-check-input"
+            className="form-check-input"
             type="checkbox"
-            id="inlineCheckbox2"
-            value="option2"
+            id="Tree-Nut-Free"
           />
-          <label class="form-check-label" for="inlineCheckbox2">
+          <label className="form-check-label" htmlFor="treeNutFree">
             Tree-Nut-Free
           </label>
         </div>
-        <div class="form-check form-check-inline">
+        <div className="form-check form-check-inline">
           <input
-            class="form-check-input"
+            className="form-check-input"
             type="checkbox"
-            id="inlineCheckbox3"
-            value="option3"
+            id="Alcohol-Free"
           />
-          <label class="form-check-label" for="inlineCheckbox3">
+          <label className="form-check-label" htmlFor="alcoholFree">
             Alcohol-Free
           </label>
         </div>
-        <div class="form-check form-check-inline">
+        <div className="form-check form-check-inline">
           <input
-            class="form-check-input"
+            className="form-check-input"
             type="checkbox"
-            id="inlineCheckbox3"
-            value="option3"
+            id="Sugar-Conscious"
           />
-          <label class="form-check-label" for="inlineCheckbox3">
+          <label className="form-check-label" htmlFor="sugarConscious">
             Sugar-Conscious
           </label>
         </div>
-        <div class="form-check form-check-inline">
+        <div className="form-check form-check-inline">
           <input
-            class="form-check-input"
+            className="form-check-input"
             type="checkbox"
-            id="inlineCheckbox3"
-            value="option3"
+            id="Low-Fat"
           />
-          <label class="form-check-label" for="inlineCheckbox3">
+          <label className="form-check-label" htmlFor="lowFat">
             Low-Fat
           </label>
         </div>
-        <div class="form-check form-check-inline">
+        <div className="form-check form-check-inline">
           <input
-            class="form-check-input"
+            className="form-check-input"
             type="checkbox"
-            id="inlineCheckbox3"
-            value="option3"
+            id="Balanced"
           />
-          <label class="form-check-label" for="inlineCheckbox3">
+          <label className="form-check-label" htmlFor="balanced">
             Balanced
-          </label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="inlineCheckbox3"
-            value="option3"
-          />
-          <label class="form-check-label" for="inlineCheckbox3">
-            Sulfites
           </label>
         </div>
       </fieldset>
@@ -169,9 +148,12 @@ const Filter = ({ changeFilter }) => {
 
 const mapDispatchToProps = dispatch => ({
   changeFilter: filter => {
-    // console.log(filter);
     dispatch(changeFilter(filter));
   }
+});
+
+const mapStateToProps = state => ({
+  filter: state.filter
 });
 
 export default connect(null, mapDispatchToProps)(Filter);

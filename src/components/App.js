@@ -1,22 +1,17 @@
 import { connect } from "react-redux";
 import Filter from "./Filter";
+import applyFilter from '../helpers/applyFilter';
 
 function App(props) {
   const { meals, filter } = props;
-  const filteredMeals = meals.filter(meal => {
-    const [caselessLabel, caselessFilter] = [
-      meal.label.toUpperCase(),
-      filter.searchTerm.toUpperCase()
-    ];
-    return caselessLabel.includes(caselessFilter);
-  });
+  const filteredMeals = applyFilter(meals, filter);
   const mealsList = (
     <div className="row">
       {filteredMeals.map(meal => {
         return (
-          <div class="card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <img src={meal.image} class="card-img-top" />
-            <div class="card-body">
+          <div className="card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+            <img src={meal.image} className="card-img-top" />
+            <div className="card-body">
               <h5>{meal.label}</h5>
             </div>
           </div>

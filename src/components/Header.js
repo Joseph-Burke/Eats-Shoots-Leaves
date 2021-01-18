@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header className={`${styles.header}`}>
+    <header data-testid='header' className={`${styles.header}`}>
       <img src={logo} className={styles["header-image"]} />
       <nav className={styles.nav}>
         <ul>

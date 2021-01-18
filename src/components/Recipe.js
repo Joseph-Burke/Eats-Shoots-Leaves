@@ -1,35 +1,39 @@
 import { connect } from "react-redux";
-import { useParams } from "react-router-dom";
+import ReactRouterDOM, { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import styles from "./styles/Recipe.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faUsers } from "@fortawesome/free-solid-svg-icons";
 
 const Recipe = ({ meals }) => {
-  let { id } = useParams();
+  const { id } = useParams();
   const meal = meals.find(meal => meal.key === parseInt(id));
 
   const ingredients = (
     <div>
       <dt>Ingredients</dt>
-      {meal.ingredientLines.map(line => (
-        <dd>{line}</dd>
+      {meal.ingredientLines.map((line, index) => (
+        <dd key={index}>{line}</dd>
       ))}
     </div>
   );
 
   const healthLabels = (
     <>
-      {meal.healthLabels.map(label => (
-        <span className="badge bg-success bg-gradient mr-1">{label}</span>
+      {meal.healthLabels.map((label, index) => (
+        <span key={index} className="badge bg-success bg-gradient mr-1">
+          {label}
+        </span>
       ))}
     </>
   );
 
   const cautions = (
     <>
-      {meal.cautions.map(label => (
-        <span className="badge bg-danger bg-gradient mr-1">{label}</span>
+      {meal.cautions.map((label, index) => (
+        <span key={index} className="badge bg-danger bg-gradient mr-1">
+          {label}
+        </span>
       ))}
     </>
   );
@@ -59,7 +63,7 @@ const Recipe = ({ meals }) => {
   return (
     <>
       <Header />
-      <div className="container-fluid">
+      <div className="container-fluid" data-testid="container">
         <div className="row card flex-row">
           <div className="col-6">
             <img className="card-img-top" src={meal.image} />

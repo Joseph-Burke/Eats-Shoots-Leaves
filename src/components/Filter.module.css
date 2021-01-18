@@ -1,0 +1,17 @@
+.range-label {
+  min-width: 15%;
+}
+
+.range-value-display {
+  min-width: 25%;
+  text-align: right;
+}
+
+.labels-fieldset {
+  display: flex;
+  flex-wrap: wrap;    
+}
+
+.labels-fieldset .form-check {
+  margin-right: 10px;    
+}

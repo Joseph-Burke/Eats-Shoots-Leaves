@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { changeFilter } from "../actions";
+import styles from "./Filter.module.css";
 
 const Filter = ({ changeFilter }) => {
   const [filter, setFilter] = useState({
@@ -13,7 +14,7 @@ const Filter = ({ changeFilter }) => {
       "Alcohol-Free": false,
       "Sugar-Conscious": false,
       "Low-Fat": false,
-      "Balanced": false,
+      Balanced: false
     }
   });
 
@@ -33,61 +34,90 @@ const Filter = ({ changeFilter }) => {
     } else if (filter.labels.hasOwnProperty(id)) {
       setFilter({
         ...filter,
-        ...{ labels: {
-          ...filter.labels,
-          [id]: !filter.labels[id]
-        }}
+        ...{
+          labels: {
+            ...filter.labels,
+            [id]: !filter.labels[id]
+          }
+        }
       });
     }
   };
 
   return (
-    <form onChange={handleChange.bind(this)}>
-      <label htmlFor="searchTerm" className="form-label">
-        Search Term
-      </label>
-      <input
-        type="text"
-        className="form-control"
-        id="searchTerm"
-        value={filter.searchTerm}
-      />
+    <form className="border rounded-lg p-3" onChange={handleChange.bind(this)}>
+      <h4>Filter</h4>
 
-      <label htmlFor="maxCalories" className="form-label">
-        Calories
-      </label>
-      <input
-        type="range"
-        className="form-range"
-        id="maxCalories"
-        min="0"
-        max="3000"
-        value={filter.maxCalories}
-      />
+      <div className="d-flex">
+        <div className="w-50 mr-3">
+          <label htmlFor="searchTerm" className="form-label">
+            Search Term
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="searchTerm"
+            value={filter.searchTerm}
+          />
+        </div>
 
-      <label htmlFor="maxTime" className="form-label">
-        Time
-      </label>
-      <input
-        type="range"
-        className="form-range"
-        id="maxTime"
-        min="0"
-        max="120"
-        step="15"
-        value={filter.maxTime}
-      />
+        <div className="w-50 ml-3">
+          <div className="d-flex">
+            <label
+              htmlFor="maxCalories"
+              className={`form-label ${styles["range-label"]} `}
+            >
+              Calories
+            </label>
+            <input
+              type="range"
+              className="form-range flex-grow-1"
+              id="maxCalories"
+              min="0"
+              max="3000"
+              step="100"
+              value={filter.maxCalories}
+            />
+            <span className={styles["range-value-display"]}>
+              {filter.maxCalories === 3000
+                ? "Any Calories"
+                : `<=${filter.maxCalories} Calories`}
+            </span>
+          </div>
 
-      <fieldset>
-        <h4>Allergens, Diets and Health</h4>
+          <div className="d-flex">
+            <label
+              htmlFor="maxTime"
+              className={`form-label ${styles["range-label"]} `}
+            >
+              Time
+            </label>
+            <input
+              type="range"
+              className="form-range flex-grow-1"
+              id="maxTime"
+              min="0"
+              max="120"
+              step="15"
+              value={filter.maxTime}
+            />
+            <span className={styles["range-value-display"]}>
+              {filter.maxTime === 120
+                ? "Any Time"
+                : `<=${filter.maxTime} Minutes`}
+            </span>
+          </div>
+        </div>
+      </div>
 
+      <fieldset className={`pt-3 pb-1 w-50 ${styles["labels-fieldset"]}`}>
         <div className="form-check form-check-inline">
           <input
             className="form-check-input"
             type="checkbox"
             id="Peanut-Free"
           />
-          <label className="form-check-label" htmlFor="peanutFree">
+          <label className="form-check-label" htmlFor="Peanut-Free">
             Peanut-Free
           </label>
         </div>
@@ -97,7 +127,7 @@ const Filter = ({ changeFilter }) => {
             type="checkbox"
             id="Tree-Nut-Free"
           />
-          <label className="form-check-label" htmlFor="treeNutFree">
+          <label className="form-check-label" htmlFor="Tree-Nut-Free">
             Tree-Nut-Free
           </label>
         </div>
@@ -107,7 +137,7 @@ const Filter = ({ changeFilter }) => {
             type="checkbox"
             id="Alcohol-Free"
           />
-          <label className="form-check-label" htmlFor="alcoholFree">
+          <label className="form-check-label" htmlFor="Alcohol-Free">
             Alcohol-Free
           </label>
         </div>
@@ -117,27 +147,19 @@ const Filter = ({ changeFilter }) => {
             type="checkbox"
             id="Sugar-Conscious"
           />
-          <label className="form-check-label" htmlFor="sugarConscious">
+          <label className="form-check-label" htmlFor="Sugar-Conscious">
             Sugar-Conscious
           </label>
         </div>
         <div className="form-check form-check-inline">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            id="Low-Fat"
-          />
-          <label className="form-check-label" htmlFor="lowFat">
+          <input className="form-check-input" type="checkbox" id="Low-Fat" />
+          <label className="form-check-label" htmlFor="Low-Fat">
             Low-Fat
           </label>
         </div>
         <div className="form-check form-check-inline">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            id="Balanced"
-          />
-          <label className="form-check-label" htmlFor="balanced">
+          <input className="form-check-input" type="checkbox" id="Balanced" />
+          <label className="form-check-label" htmlFor="Balanced">
             Balanced
           </label>
         </div>

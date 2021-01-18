@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import Filter from "./Filter";
 import applyFilter from "../helpers/applyFilter";
 import Header from "../components/Header";
+import styles from './App.module.css';
 
 function App(props) {
   const { meals, filter } = props;
@@ -11,15 +12,16 @@ function App(props) {
       {filteredMeals.map(meal => {
         return (
           <div
-            className="card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3"
+            className={`${styles['recipe-card']} card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 p-0`}
             onClick={() => {
               window.location.href = `./recipe/${meal.key}`;
             }}
           >
             <img src={meal.image} className="card-img-top" />
-            <div className="card-body">
+            <div className={`card-body ${styles['card-body']}`}>
               <h5>{meal.label}</h5>
             </div>
+            <div className={`w-100 h-100 ${styles.overlay}`}></div>
           </div>
         );
       })}

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import styles from "./Recipe.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { faClock, faUsers } from "@fortawesome/free-solid-svg-icons";
 
 const Recipe = ({ meals }) => {
   let { id } = useParams();
@@ -45,6 +45,17 @@ const Recipe = ({ meals }) => {
     </span>
   );
 
+  const servings = (
+    <span className="ml-2">
+      <FontAwesomeIcon
+        icon={faUsers}
+        transform="grow-5"
+        className="mr-2 ml-1"
+      />
+      {meal.yield == 0 ? "Unknown" : `Serves ${meal.yield}`}
+    </span>
+  );
+
   return (
     <>
       <Header homeURL="../"></Header>
@@ -53,7 +64,7 @@ const Recipe = ({ meals }) => {
           <div className="col-6">
             <img className="card-img-top" src={meal.image} />
           </div>
-          <div className={`card-body col-6 py-0 ${styles['card-body']}`}>
+          <div className={`card-body col-6 py-0 ${styles["card-body"]}`}>
             <h1 className="card-title m-0">{meal.label}</h1>
             <h3 className="card-subtitle text-muted font-weight-lighter">
               from {meal.source}
@@ -65,10 +76,16 @@ const Recipe = ({ meals }) => {
             <div
               className={`d-flex justify-content-between mt-2 ${styles["font-size-20"]}`}
             >
-              {time}
+              <div>
+                {time}
+                {servings}
+              </div>
               <span>Calories: {Math.floor(meal.calories)}</span>
             </div>
             {ingredients}
+            <a target="_blank" className="btn btn-primary" href={meal.url}>
+              Go To Recipe
+            </a>
           </div>
         </div>
       </div>

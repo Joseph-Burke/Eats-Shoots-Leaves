@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import Filter from "./Filter";
-import applyFilter from '../helpers/applyFilter';
-import Header from '../components/Header';
+import applyFilter from "../helpers/applyFilter";
+import Header from "../components/Header";
 
 function App(props) {
   const { meals, filter } = props;
@@ -10,7 +10,12 @@ function App(props) {
     <div className="row">
       {filteredMeals.map(meal => {
         return (
-          <div className="card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+          <div
+            className="card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3"
+            onClick={() => {
+              window.location.href = `./recipe/${meal.key}`;
+            }}
+          >
             <img src={meal.image} className="card-img-top" />
             <div className="card-body">
               <h5>{meal.label}</h5>
@@ -23,13 +28,11 @@ function App(props) {
 
   return (
     <>
-    <Header homeURL="./" />
-    <section className="container px-0 py-4">
-      <Filter />
-    </section>
-    <section className="container">
-      {mealsList}
-    </section>
+      <Header homeURL="./" />
+      <section className="container px-0 py-4">
+        <Filter />
+      </section>
+      <section className="container">{mealsList}</section>
     </>
   );
 }

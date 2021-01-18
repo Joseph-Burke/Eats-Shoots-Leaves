@@ -34,17 +34,16 @@ const Recipe = ({ meals }) => {
     </>
   );
 
-  const time =
-    meal.totalTime == 0 ? null : (
-      <span>
-        <FontAwesomeIcon
-          icon={faClock}
-          transform="grow-5"
-          className="mr-2 ml-1"
-        />
-        {meal.totalTime} minutes
-      </span>
-    );
+  const time = (
+    <span>
+      <FontAwesomeIcon
+        icon={faClock}
+        transform="grow-5"
+        className="mr-2 ml-1"
+      />
+      {meal.totalTime == 0 ? "Unknown" : `${meal.totalTime} minutes`}
+    </span>
+  );
 
   return (
     <>
@@ -54,8 +53,8 @@ const Recipe = ({ meals }) => {
           <div className="col-6">
             <img className="card-img-top" src={meal.image} />
           </div>
-          <div className="card-body col-6 py-0">
-            <h1 className="card-title">{meal.label}</h1>
+          <div className={`card-body col-6 py-0 ${styles['card-body']}`}>
+            <h1 className="card-title m-0">{meal.label}</h1>
             <h3 className="card-subtitle text-muted font-weight-lighter">
               from {meal.source}
             </h3>

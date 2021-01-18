@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import Header from "../components/Header";
-import styles from "./Recipe.module.css";
+import styles from "./styles/Recipe.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faUsers } from "@fortawesome/free-solid-svg-icons";
 
@@ -58,9 +58,9 @@ const Recipe = ({ meals }) => {
 
   return (
     <>
-      <Header homeURL="../"></Header>
+      <Header />
       <div className="container-fluid">
-        <div className="row">
+        <div className="row card flex-row">
           <div className="col-6">
             <img className="card-img-top" src={meal.image} />
           </div>

@@ -1,24 +1,20 @@
-import { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import { changeFilter } from "../actions";
-import logo from "../logo.png";
-import styles from './Header.module.css';
+import logo from "../assets/logo.png";
+import styles from "./styles/Header.module.css";
+import { Link } from "react-router-dom";
 
-const Header = props => {
-  const { homeURL } = props;
+const Header = () => {
   return (
-  <header className={styles.header}>
-    <img src={logo} className={styles['header-image']}/>
-    <nav className={styles.nav}>
-      <ul>
-        <li>
-          <a href={homeURL}>Recipe Index</a>
-        </li>
-      </ul>
-
-    </nav>
-  </header>
-  )
+    <header className={`${styles.header}`}>
+      <img src={logo} className={styles["header-image"]} />
+      <nav className={styles.nav}>
+        <ul>
+          <li>
+            <Link to="/"> Recipe Index </Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
 };
 
 export default Header;

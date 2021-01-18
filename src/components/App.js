@@ -1,8 +1,9 @@
 import { connect } from "react-redux";
-import Filter from "./Filter";
+import Filter from "../containers/Filter";
 import applyFilter from "../helpers/applyFilter";
 import Header from "../components/Header";
-import styles from './App.module.css';
+import styles from './styles/App.module.css';
+import { Link } from 'react-router-dom';
 
 function App(props) {
   const { meals, filter } = props;
@@ -11,18 +12,17 @@ function App(props) {
     <div className="row">
       {filteredMeals.map(meal => {
         return (
-          <div
-            className={`${styles['recipe-card']} card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 p-0`}
-            onClick={() => {
-              window.location.href = `./recipe/${meal.key}`;
-            }}
+          <Link
+            key={meal.key}
+            className={`${styles['recipe-card']} card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 p-0 d-block`}
+            to={`/recipe/${meal.key}`}
           >
             <img src={meal.image} className="card-img-top" />
             <div className={`card-body ${styles['card-body']}`}>
               <h5>{meal.label}</h5>
             </div>
             <div className={`w-100 h-100 ${styles.overlay}`}></div>
-          </div>
+          </Link>
         );
       })}
     </div>
@@ -30,7 +30,7 @@ function App(props) {
 
   return (
     <>
-      <Header homeURL="./" />
+      <Header />
       <section className="container px-0 py-4">
         <Filter />
       </section>

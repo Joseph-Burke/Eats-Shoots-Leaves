@@ -1,4 +1,4 @@
-import constants from "./constants";
+import constants from "../constants/constants";
 const { CHANGE_FILTER } = constants;
 
 export const changeFilter = filter => {

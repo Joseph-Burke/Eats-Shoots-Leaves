@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { changeFilter } from "../actions";
-import styles from "./Filter.module.css";
+import { changeFilter } from "../actions/actions";
+import styles from "./styles/Filter.module.css";
 
 const Filter = ({ changeFilter }) => {
   const [filter, setFilter] = useState({
@@ -45,7 +45,7 @@ const Filter = ({ changeFilter }) => {
   };
 
   return (
-    <form className="border rounded-lg p-3" onChange={handleChange.bind(this)}>
+    <form className="border rounded-lg p-3">
       <h4>Filter</h4>
 
       <div className="d-flex">
@@ -58,6 +58,7 @@ const Filter = ({ changeFilter }) => {
             className="form-control"
             id="searchTerm"
             value={filter.searchTerm}
+            onChange={handleChange.bind(this)}
           />
         </div>
 
@@ -77,6 +78,7 @@ const Filter = ({ changeFilter }) => {
               max="3000"
               step="100"
               value={filter.maxCalories}
+              onChange={handleChange.bind(this)}
             />
             <span className={styles["range-value-display"]}>
               {filter.maxCalories === 3000
@@ -100,6 +102,7 @@ const Filter = ({ changeFilter }) => {
               max="120"
               step="15"
               value={filter.maxTime}
+              onChange={handleChange.bind(this)}
             />
             <span className={styles["range-value-display"]}>
               {filter.maxTime === 120
@@ -110,7 +113,7 @@ const Filter = ({ changeFilter }) => {
         </div>
       </div>
 
-      <fieldset className={`pt-3 pb-1 w-50 ${styles["labels-fieldset"]}`}>
+      <fieldset className={`pt-3 pb-1 w-50 ${styles["labels-fieldset"]}`} onChange={handleChange.bind(this)}>
         <div className="form-check form-check-inline">
           <input
             className="form-check-input"
@@ -172,10 +175,6 @@ const mapDispatchToProps = dispatch => ({
   changeFilter: filter => {
     dispatch(changeFilter(filter));
   }
-});
-
-const mapStateToProps = state => ({
-  filter: state.filter
 });
 
 export default connect(null, mapDispatchToProps)(Filter);

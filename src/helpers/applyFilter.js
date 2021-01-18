@@ -10,7 +10,6 @@ export default function(mealList, filterObj) {
       healthLabels: mealHealthLabels
     } = meal;
 
-
     const searchTermMatch = label
       .toUpperCase()
       .includes(searchTerm.toUpperCase());
@@ -20,8 +19,13 @@ export default function(mealList, filterObj) {
     const labelsMatch = (function() {
       let match = true;
 
-      Object.keys(labels).filter(key => labels[key] === true).forEach(label => {
-          if (!mealDietLabels.includes(label) && !mealHealthLabels.includes(label)) {
+      Object.keys(labels)
+        .filter(key => labels[key] === true)
+        .forEach(label => {
+          if (
+            !mealDietLabels.includes(label) &&
+            !mealHealthLabels.includes(label)
+          ) {
             match = false;
           }
         });

@@ -1,9 +1,9 @@
 .range-label {
-  min-width: 15%;
+  min-width: 20%;
 }
 
 .range-value-display {
-  min-width: 25%;
+  width: 30%;
   text-align: right;
 }
 

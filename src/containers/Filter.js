@@ -48,8 +48,8 @@ const Filter = ({ changeFilter }) => {
     <form className="border rounded-lg p-3">
       <h4>Filter</h4>
 
-      <div className="d-flex">
-        <div className="w-50 mr-3">
+      <div className="d-flex flex-column flex-md-row">
+        <div className="w-100 w-md-50 mr-md-3">
           <label htmlFor="searchTerm" className="form-label">
             Search Term
           </label>
@@ -62,7 +62,7 @@ const Filter = ({ changeFilter }) => {
           />
         </div>
 
-        <div className="w-50 ml-3">
+        <div className="w-100 w-md-50 ml-md-3">
           <div className="d-flex">
             <label
               htmlFor="maxCalories"
@@ -81,7 +81,7 @@ const Filter = ({ changeFilter }) => {
               onChange={handleChange.bind(this)}
             />
             <span className={styles["range-value-display"]}>
-              {filter.maxCalories === 3000
+              {filter.maxCalories == 3000
                 ? "Any Calories"
                 : `<=${filter.maxCalories} Calories`}
             </span>
@@ -105,7 +105,7 @@ const Filter = ({ changeFilter }) => {
               onChange={handleChange.bind(this)}
             />
             <span className={styles["range-value-display"]}>
-              {filter.maxTime === 120
+              {filter.maxTime == 120
                 ? "Any Time"
                 : `<=${filter.maxTime} Minutes`}
             </span>

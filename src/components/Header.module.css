@@ -1,0 +1,19 @@
+.header {
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 130px;
+}
+
+.header-image {
+  width: 120px;
+}
+
+.nav ul {
+  padding: 0;
+}
+
+.nav li {
+  list-style-type: none;
+}

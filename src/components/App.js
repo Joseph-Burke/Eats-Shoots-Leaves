@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import Filter from "./Filter";
 import applyFilter from '../helpers/applyFilter';
+import Header from '../components/Header';
 
 function App(props) {
   const { meals, filter } = props;
@@ -22,6 +23,7 @@ function App(props) {
 
   return (
     <>
+    <Header homeURL="./" />
     <section className="container px-0 py-4">
       <Filter />
     </section>

@@ -11,7 +11,7 @@
   z-index: 4;
 }
 
-.recipe-card:hover .overlay{
+.recipe-card:hover .overlay {
   background-color: rgba(255, 255, 255, 0.45);
   transition: background-color 0.5s ease-in;
 }

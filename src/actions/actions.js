@@ -1,9 +1,10 @@
-import constants from "../constants/constants";
+import constants from '../constants/constants';
+
 const { CHANGE_FILTER } = constants;
 
-export const changeFilter = filter => {
-  return {
-    type: CHANGE_FILTER,
-    filter
-  };
-};
+const changeFilter = filter => ({
+  type: CHANGE_FILTER,
+  filter,
+});
+
+export default changeFilter;

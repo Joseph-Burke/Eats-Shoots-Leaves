@@ -1,31 +1,33 @@
-import { createStore } from "redux";
-import reducer from "../reducers/reducer";
-import getMeals from "../helpers/getMeals.js";
+import { createStore } from 'redux';
+import reducer from '../reducers/reducer';
+import getMeals from '../helpers/getMeals';
 
-export default (async function() {
-  let meals = await getMeals().then(meals =>
-    meals.map((meal, index) => ({
-      key: index,
-      ...meal
-    }))
-  );
+const generateStore = async () => {
+  const meals = await getMeals().then(meals => meals.map((meal, index) => ({
+    key: index,
+    ...meal,
+  })));
 
   const filter = {
     searchTerm: '',
-    maxCalories: 10000, 
-    maxTime: 1000, 
+    maxCalories: 10000,
+    maxTime: 1000,
     labels: {
-      "Peanut-Free": false,
-      "Tree-Nut-Free": false,
-      "Alcohol-Free": false,
-      "Sugar-Conscious": false,
-      "Low-Fat": false,
-      "Balanced": false,
-    }
+      'Peanut-Free': false,
+      'Tree-Nut-Free': false,
+      'Alcohol-Free': false,
+      'Sugar-Conscious': false,
+      'Low-Fat': false,
+      Balanced: false,
+    },
   };
   const initialState = {
     meals,
-    filter
+    filter,
   };
   return createStore(reducer, initialState);
-})();
+};
+
+const store = generateStore();
+
+export default store;

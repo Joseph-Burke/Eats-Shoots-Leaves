@@ -4,7 +4,8 @@ This project is the capstone project for Microverse's React & Redux module.
 
 The website is a catalogue of vegan recipes, provided by the [Edamam Recipe Search API](https://developer.edamam.com/edamam-docs-recipe-api).
 
-![screenshot](./screenshot.png)
+![screenshot](./screenshots/screenshot-main.png)
+![screenshot](./screenshots/screenshot-recipe.png)
 
 The website consists of two pages:
 

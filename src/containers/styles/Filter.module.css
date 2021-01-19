@@ -1,4 +1,4 @@
-.range-label {
+.range-name {
   min-width: 20%;
 }
 
@@ -9,9 +9,9 @@
 
 .labels-fieldset {
   display: flex;
-  flex-wrap: wrap;    
+  flex-wrap: wrap;
 }
 
 .labels-fieldset .form-check {
-  margin-right: 10px;    
+  margin-right: 10px;
 }

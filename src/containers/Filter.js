@@ -50,8 +50,8 @@ const Filter = ({ changeFilter }) => {
       <h4>Filter</h4>
 
       <div className="d-flex flex-column flex-md-row">
-        <div className="w-100 w-md-50 mr-md-3">
-          <label htmlFor="searchTerm" className="form-label">
+        <div className="w-100 w-md-50 mr-md-3 d-flex">
+          <label htmlFor="searchTerm" className="form-label flex-grow-1">
             Search Term
             <input
               type="text"
@@ -67,9 +67,9 @@ const Filter = ({ changeFilter }) => {
           <div className="d-flex">
             <label
               htmlFor="maxCalories"
-              className={`form-label ${styles['range-label']} `}
+              className={`form-label ${styles['range-label']} d-flex flex-grow-1`}
             >
-              Calories
+              <span className={styles['range-name']}>Calories</span>
               <input
                 type="range"
                 className="form-range flex-grow-1"
@@ -80,20 +80,20 @@ const Filter = ({ changeFilter }) => {
                 value={filter.maxCalories}
                 onChange={handleChange.bind(this)}
               />
+              <span className={styles['range-value-display']}>
+                {[3000, '3000'].includes(filter.maxCalories)
+                  ? 'Any Calories'
+                  : `<=${filter.maxCalories} Calories`}
+              </span>
             </label>
-            <span className={styles['range-value-display']}>
-              {[3000, '3000'].includes(filter.maxCalories)
-                ? 'Any Calories'
-                : `<=${filter.maxCalories} Calories`}
-            </span>
           </div>
 
           <div className="d-flex">
             <label
               htmlFor="maxTime"
-              className={`form-label ${styles['range-label']} `}
+              className={`form-label ${styles['range-label']} d-flex flex-grow-1`}
             >
-              Time
+              <span className={styles['range-name']}>Time</span>
               <input
                 type="range"
                 className="form-range flex-grow-1"
@@ -104,12 +104,12 @@ const Filter = ({ changeFilter }) => {
                 value={filter.maxTime}
                 onChange={handleChange.bind(this)}
               />
+              <span className={styles['range-value-display']}>
+                {[120, '120'].includes(filter.maxTime)
+                  ? 'Any Time'
+                  : `<=${filter.maxTime} Minutes`}
+              </span>
             </label>
-            <span className={styles['range-value-display']}>
-              {[120, '120'].includes(filter.maxTime)
-                ? 'Any Time'
-                : `<=${filter.maxTime} Minutes`}
-            </span>
           </div>
         </div>
       </div>

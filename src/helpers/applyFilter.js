@@ -18,7 +18,7 @@ const applyFilter = (mealList, filterObj) => {
     const caloriesMatch = calories <= maxCalories;
     const timeMatch = totalTime <= maxTime;
 
-    const labelsMatch = () => {
+    const labelsMatch = (() => {
       let match = true;
 
       Object.keys(labels)
@@ -33,7 +33,7 @@ const applyFilter = (mealList, filterObj) => {
         });
 
       return match;
-    };
+    })();
 
     const allFiltersMatch = searchTermMatch && caloriesMatch && timeMatch && labelsMatch;
 

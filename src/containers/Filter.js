@@ -45,7 +45,7 @@ const Filter = ({ changeFilter }) => {
   };
 
   return (
-    <form className="border rounded-lg p-3">
+    <form data-testid="filterForm" className="border rounded-lg p-3">
       <h4>Filter</h4>
 
       <div className="d-flex flex-column flex-md-row">
@@ -113,7 +113,7 @@ const Filter = ({ changeFilter }) => {
         </div>
       </div>
 
-      <fieldset className={`pt-3 pb-1 w-50 ${styles["labels-fieldset"]}`} onChange={handleChange.bind(this)}>
+      <fieldset className={`pt-3 pb-1 w-100 w-md-50 ${styles["labels-fieldset"]}`} onChange={handleChange.bind(this)}>
         <div className="form-check form-check-inline">
           <input
             className="form-check-input"

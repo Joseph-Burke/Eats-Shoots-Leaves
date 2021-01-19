@@ -9,11 +9,10 @@ function App(props) {
   const { meals, filter } = props;
   const filteredMeals = applyFilter(meals, filter);
   const mealsList = (
-    <div className="row">
+    <div className="row" data-testid="mealsList">
       {filteredMeals.map(meal => {
         return (
           <Link
-            data-testid="app"
             key={meal.key}
             className={`${styles["recipe-card"]} card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 p-0 d-block`}
             to={`/recipe/${meal.key}`}
@@ -31,7 +30,6 @@ function App(props) {
 
   return (
     <>
-      <h1>HELLO</h1>
       <Header />
       <section className="container px-0 py-4">
         <Filter />

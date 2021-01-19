@@ -1,7 +1,7 @@
 import { Provider } from "react-redux";
-import { render, screen, waitFor } from "@testing-library/react";
-import '@testing-library/jest-dom';
-import { StaticRouter, MemoryRouter, Route } from "react-router-dom";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import { MemoryRouter, Route } from "react-router-dom";
 import Recipe from "../components/Recipe";
 import storePromise from "../store/store";
 
@@ -16,5 +16,13 @@ test("the Recipe component renders correctly", async () => {
     </Provider>
   );
 
-  expect(screen.getByTestId('header')).toBeInTheDocument();
+  const [header, container, ingredientsTitle] = [
+    screen.getByTestId("header"),
+    screen.getByTestId("container"),
+    screen.getByText(/ingredients/i)
+  ];
+
+  expect(header).toBeInTheDocument();
+  expect(container).toBeInTheDocument();
+  expect(ingredientsTitle).toBeInTheDocument();
 });

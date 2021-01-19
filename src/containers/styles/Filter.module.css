@@ -10,8 +10,15 @@
 .labels-fieldset {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .labels-fieldset .form-check {
   margin-right: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .labels-fieldset {
+    width: 50%;
+  }
 }

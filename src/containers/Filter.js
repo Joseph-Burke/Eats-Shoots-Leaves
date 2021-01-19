@@ -115,7 +115,7 @@ const Filter = ({ changeFilter }) => {
       </div>
 
       <fieldset
-        className={`pt-3 pb-1 w-100 w-md-50 ${styles['labels-fieldset']}`}
+        className={`pt-3 pb-1 ${styles['labels-fieldset']}`}
         onChange={handleChange.bind(this)}
       >
         <div className="form-check form-check-inline">

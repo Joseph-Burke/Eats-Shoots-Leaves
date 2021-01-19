@@ -40,7 +40,7 @@ function App(props) {
 
 App.propTypes = {
   meals: PropTypes.arrayOf(PropTypes.object).isRequired,
-  filter: {
+  filter: PropTypes.shape({
     searchTerm: PropTypes.string.isRequired,
     maxCalories: PropTypes.number.isRequired,
     maxTime: PropTypes.number.isRequired,
@@ -52,7 +52,7 @@ App.propTypes = {
       'Low-Fat': PropTypes.bool.isRequired,
       Balanced: PropTypes.bool.isRequired,
     }),
-  }.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = state => ({

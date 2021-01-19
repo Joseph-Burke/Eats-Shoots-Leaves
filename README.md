@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# Eats, Shoots & Leaves
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is the capstone project for Microverse's React & Redux module.
 
-## Available Scripts
+The website is a catalogue of vegan recipes, provided by the [Edamam Recipe Search API](https://developer.edamam.com/edamam-docs-recipe-api).
 
-In the project directory, you can run:
+![screenshot](./screenshot.png)
 
-### `yarn start`
+The website consists of two pages:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1) The main page, where the user may view images and titles for all the recipes and apply filters to the list of recipes shown.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+2) The recipe page, which can be accessed by clicking on any of the recipe tiles on the main page. Here, the user can view more details about the recipe and follow a link to the original recipe's website.
 
-### `yarn test`
+## Live Demo
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To jump right into the project, visit the [Live Demo](https://eats-shoots-leaves.herokuapp.com/), deployed on Heroku.
 
-### `yarn build`
+## Built With
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **[React](https://reactjs.org/)** - Bootstrapped using the [**create-react-app**](https://www.npmjs.com/package/create-react-app) package)
+- **[Redux](https://redux.js.org/)** - Redux is used for storing state. The `react-redux` package was used to enable React bindings for Redux.
+- **[React Router](https://reactrouter.com/)** - the `react-router-dom` package was used to allow navigation between pages.
+- **[Bootstrap]** and **[Font Awesome]** were both used, via their npm packages.
+- Kent Dodds' **[Testing Library](https://testing-library.com/)** - the `/jest-dom` and `/react` APIs were used for testing, on top of Jest, which is `create-react-app`'s default testing suite.
+- **ESLint** and **Stylelint** for linting JavaScript and CSS respectively.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Local Setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
 
-### `yarn eject`
+_**node.js is a pre-requisite of this project.**_
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Don't have node.js? Choose a download method [here](https://nodejs.org/en/download/).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Setup Instructions
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Open a Terminal and navigate to the location in your system where you would like to download the project. **New to Terminal? [Learn here](https://www.freecodecamp.org/news/conquering-the-command-line-f85f5e46c07c/).**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+2. Enter the following line of code to clone this repository:
 
-## Learn More
+`git clone git@github.com:Joseph-Burke/Eats-Shoots-Leaves.git`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Now that the repository has been cloned, navigate inside it using `cd Eats-Shoots-Leaves`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. The project's dependencies are managed by npm. The details of this project's dependencies can be found in `package.json`. To install them, enter the following line of code in the Terminal.
 
-### Code Splitting
+`npm install`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+5. Congratulations! All dependencies have now been installed. The source code may now be compiled. Simply enter the pre-existing script below to compile the code and view the project: 
 
-### Analyzing the Bundle Size
+`npm start`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+7. Enjoy!
 
-### Making a Progressive Web App
+> #### Important note on environment variables: 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+> This project makes calls to the Edamam Recipe Search API using its own APP_ID and APP_KEY variables, which are protected for security reasons.
 
-### Advanced Configuration
+> For the project to work locally, the user must first sign up to the Edamam API to obtain their own ID and KEY. [dotenv] is listed as a project dependency, so the user then just needs to create a `.env` file in the root directory of the cloned repository, where they may store the two necessary variables: `REACT_APP_ID` and `REACT_APP_KEY`. Read about how to use the `dotenv` package [here](https://www.npmjs.com/package/dotenv).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Author
 
-### Deployment
+👤 **Joe "Employable" Burke**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Github: [@Joseph-Burke](https://github.com/Joseph-Burke)
+- Twitter: [@__joeburke](https://twitter.com/__joeburke)
+- Linkedin: [Joseph Burke](https://www.linkedin.com/in/--joeburke/)
 
-### `yarn build` fails to minify
+## 🤝 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Contributions, issues and feature requests are always welcome!
+
+Drop me a line through any of the channels listed above or head directly to the [issues page](issues/).
+
+## Show your support
+
+Hey! Give this project a ⭐️! It costs nothing :)
+
+## Acknowledgments
+
+- This project was built as part of the Microverse Web Development course, which you can learn more about [here](https://www.microverse.org/).
+
+## 📝 License
+
+This project is [MIT](lic.url) licensed.

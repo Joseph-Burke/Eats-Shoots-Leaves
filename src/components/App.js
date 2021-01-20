@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import PropTypes, { oneOfType } from 'prop-types';
 import Filter from '../containers/Filter';
 import applyFilter from '../helpers/applyFilter';
 import Header from './Header';
@@ -42,7 +42,7 @@ App.propTypes = {
   meals: PropTypes.arrayOf(PropTypes.object).isRequired,
   filter: PropTypes.shape({
     searchTerm: PropTypes.string.isRequired,
-    maxCalories: PropTypes.number.isRequired,
+    maxCalories: oneOfType([PropTypes.string, PropTypes.number]),
     maxTime: PropTypes.number.isRequired,
     labels: PropTypes.shape({
       'Peanut-Free': PropTypes.bool.isRequired,

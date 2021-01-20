@@ -43,7 +43,7 @@ App.propTypes = {
   filter: PropTypes.shape({
     searchTerm: PropTypes.string.isRequired,
     maxCalories: oneOfType([PropTypes.string, PropTypes.number]),
-    maxTime: PropTypes.number.isRequired,
+    maxTime: oneOfType([PropTypes.string, PropTypes.number]),
     labels: PropTypes.shape({
       'Peanut-Free': PropTypes.bool.isRequired,
       'Tree-Nut-Free': PropTypes.bool.isRequired,

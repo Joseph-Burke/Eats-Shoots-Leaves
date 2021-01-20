@@ -62,6 +62,12 @@ Don't have node.js? Choose a download method [here](https://nodejs.org/en/downlo
 
 11. Start the project with the `npm start` command.
 
+## Tests
+
+To run tests, simply enter the `npm test` command in the terminal. This will begin `create-react-app`'s built-in testing script, which will watch for changes and run tests automatically.
+
+If you're interested in writing further tests for this project, refer to the documentation for [Jest](https://jestjs.io/docs/en/getting-started) and [Testing Library](https://testing-library.com/).
+
 ## Author
 
 👤 **Joe Burke**

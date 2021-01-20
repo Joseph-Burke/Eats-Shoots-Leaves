@@ -46,17 +46,21 @@ Don't have node.js? Choose a download method [here](https://nodejs.org/en/downlo
 
 `npm install`
 
-5. Congratulations! All dependencies have now been installed. The source code may now be compiled. Simply enter the pre-existing script below to compile the code and view the project: 
+5. The project is now fully installed. The only thing left to do is set up your personal Edamam Recipe Search API credentials as environment variables. To do that, follow [this link](https://developer.edamam.com/edamam-recipe-api) and hit that "Start Now" button in the 'Developer' column.
 
-`npm start`
+6. Complete the form that appears and submit it. Make sure that the "Developer" option under "Recipe Search API" is selected in the "Choose your plan" dropdown.
 
-7. Enjoy!
+7. Having signed up, you will now be able to log in to the Edamam website. Navigate to the Dashboard using the button in the top right of the window. Then, hit the "Applications" tab. From there, press the "Create New Application" button and choose the "Recipe Search API" option. You can then enter a name and a description for the application; you may wish to enter "Eats, Shoots and Leaves" as a name.
 
-> #### Important note on environment variables: 
+8. You will immediately receive an e-mail to confirm that your application has been created. On the Dashboard's "Applications" tab, your newly created app will be there. Hit the view button and you will be able to see the details of your app. The two important pieces of information are the **Application ID** and the **Application Keys**.
 
-> This project makes calls to the Edamam Recipe Search API using its own APP_ID and APP_KEY variables, which are protected for security reasons.
+9. The only thing that remains is to create a file in the root directory of the project called `.env`. Enter the two variables in the `.env` file as seen in the screenshot:
 
-> For the project to work locally, the user must first sign up to the Edamam API to obtain their own ID and KEY. `dotenv` is listed as a project dependency, so the user then just needs to create a file named `.env` in the root directory of the cloned repository, where they may store the two necessary variables: `REACT_APP_ID` and `REACT_APP_KEY`. Read about how to use the `dotenv` package [here](https://www.npmjs.com/package/dotenv).
+![screenshot](./screenshots/env_screenshot.png)
+
+10. You're ready to go! Your personal API credentials are now available inside `process.env` and will be used in the project's calls to the API - the Developer plan allows up to 5 calls per minute. 
+
+11. Start the project with the `npm start` command.
 
 ## Author
 

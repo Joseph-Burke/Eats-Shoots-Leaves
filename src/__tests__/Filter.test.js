@@ -3,10 +3,9 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MemoryRouter, Route } from 'react-router-dom';
 import Filter from '../containers/Filter';
-import storePromise from '../store/store';
+import store from '../store/test-store';
 
-test('the Filter component renders correctly', async () => {
-  const store = await storePromise;
+test('the Filter component renders correctly', () => {
   render(
     <Provider store={store}>
       <MemoryRouter initialEntries={['/']} initialIndex={1}>

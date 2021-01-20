@@ -3,11 +3,9 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MemoryRouter, Route } from 'react-router-dom';
 import Recipe from '../components/Recipe';
-import storePromise from '../store/store';
+import store from '../store/test-store';
 
-test('the Recipe component renders correctly', async () => {
-  const store = await storePromise;
-
+test('the Recipe component renders correctly', () => {
   render(
     <Provider store={store}>
       <MemoryRouter initialEntries={['/recipe/2']} initialIndex={1}>
